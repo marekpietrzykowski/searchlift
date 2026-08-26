@@ -1,6 +1,7 @@
+import { calculateOpportunityScore } from "@/lib/opportunity-score";
+
 type Opportunity = {
   page: string;
-  score: number;
   position: number;
   impressions: number;
   clicks: number;
@@ -12,7 +13,6 @@ type Opportunity = {
 const opportunities: Opportunity[] = [
   {
     page: "/poradnik-randkowy",
-    score: 94,
     position: 8.3,
     impressions: 18430,
     clicks: 241,
@@ -22,7 +22,6 @@ const opportunities: Opportunity[] = [
   },
   {
     page: "/jak-poznac-kogos",
-    score: 89,
     position: 11.2,
     impressions: 31200,
     clicks: 290,
@@ -32,7 +31,6 @@ const opportunities: Opportunity[] = [
   },
   {
     page: "/randki-online",
-    score: 82,
     position: 4.7,
     impressions: 12800,
     clicks: 310,
@@ -149,7 +147,7 @@ export default function Home() {
                   >
                     <td className="px-6 py-5">
                       <span className="rounded-lg bg-emerald-400/10 px-3 py-2 font-bold text-emerald-400">
-                        {item.score}
+                        {calculateOpportunityScore(item)}
                       </span>
                     </td>
 
