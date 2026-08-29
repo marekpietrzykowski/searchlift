@@ -5,7 +5,7 @@
 Instead of stopping at clicks, impressions, CTR and average position, SearchLift tries to answer a more useful question:
 
 > What should I work on next, why, and how will I know whether the change helped?
-> 
+
 ## Preview
 
 ### Overview
@@ -23,27 +23,27 @@ Instead of stopping at clicks, impressions, CTR and average position, SearchLift
 ## What it does
 
 - Google OAuth 2.0 with **read-only Search Console** access
-- multi-property GSC switcher
+- Multi-property GSC switcher
 - **Site Portfolio** view to compare several properties and surface the ones needing attention
-- live 28/90-day current-vs-previous comparisons
+- Live 28/90-day current-vs-previous comparisons
 - **Opportunity Finder** with transparent 0–100 scoring and confidence guardrails
 - **Estimated Click Gain** based on a realistic next target-position CTR model
 - **Content Decay** detection
-- lost-query diagnosis for declining pages
+- Lost-query diagnosis for declining pages
 - **Low CTR** opportunities
 - **Quick Wins** close to stronger ranking zones
-- rising-content detection
+- Rising-content detection
 - **Cannibalization Detector** for queries shared by several landing pages
 - **Action Plan** sorted by priority, impact and estimated upside
 - **SEO Brief** with biggest wins/losses, queries entering/leaving TOP 10 and new queries
 - Page Explorer and Query Explorer
 - **Optimization Tracker**
-- exact 7/14/28-day **before-vs-after GSC experiments** around the implementation date
-- on-demand **technical page context** (HTTP, response time, title, description, H1, canonical, indexability, robots.txt, sitemap.xml)
+- Exact 7/14/28-day **before-vs-after GSC experiments** around the implementation date
+- On-demand **technical page context** (HTTP, response time, title, description, H1, canonical, indexability, robots.txt, sitemap.xml)
 - SSRF protection for server-side technical checks
 - CSV export
 - Demo Mode without Google credentials
-- encrypted HTTP-only OAuth session cookie
+- Encrypted HTTP-only OAuth session cookie
 
 ## Why it is useful
 
@@ -83,7 +83,7 @@ For a declining page, SearchLift also surfaces the queries contributing most to 
 - Google OAuth 2.0
 - Google Search Console API
 
-No database is required for the portfolio build. Optimization notes are kept in browser localStorage; exact experiment measurements are fetched live from GSC.
+No database is required in the current version. Optimization notes are kept in browser localStorage; exact experiment measurements are fetched live from GSC.
 
 ## Architecture
 
@@ -115,7 +115,7 @@ Without `.env.local`, SearchLift automatically starts in Demo Mode.
 
 ## Google Search Console setup
 
-Create a Google Cloud OAuth Web Application and enable **Google Search Console API**.
+Create a Google Cloud OAuth Web Application and enable the **Google Search Console API**.
 
 Authorized redirect URI:
 
@@ -165,14 +165,14 @@ npm run build
 
 ## Security decisions
 
-- Google Client Secret never reaches the browser.
+- Google client secret never reaches the browser.
 - OAuth access/refresh data is stored in an encrypted HTTP-only cookie.
 - OAuth scope is read-only.
 - Technical audits reject localhost, private IP ranges and hostnames resolving to private addresses.
 - Redirect destinations are revalidated server-side.
 - Technical fetches use timeouts and a maximum HTML response size.
 
-## Portfolio / interview talking points
+## Engineering highlights
 
 This project demonstrates:
 
@@ -180,17 +180,14 @@ This project demonstrates:
 2. TypeScript domain models
 3. Next.js server routes
 4. OAuth 2.0 and token refresh
-5. external API integration
-6. pagination of GSC rows
-7. business-rule / scoring design
-8. low-data guardrails
-9. date-window analytics
-10. security considerations around server-side URL fetching
-11. translating raw analytics into an actionable product
+5. External API integration
+6. Pagination of GSC rows
+7. Business rules and scoring design
+8. Low-data guardrails
+9. Date-window analytics
+10. Security considerations around server-side URL fetching
+11. Translating raw analytics into an actionable product
 
 See:
 
-- `docs/ARCHITECTURE.md`
-- `docs/INTERVIEW_GUIDE.md`
-- `PROJECT_WALKTHROUGH.md`
-- `GITHUB_PUBLISH.md`
+- [Architecture](docs/ARCHITECTURE.md)
