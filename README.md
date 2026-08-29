@@ -5,6 +5,20 @@
 Instead of stopping at clicks, impressions, CTR and average position, SearchLift tries to answer a more useful question:
 
 > What should I work on next, why, and how will I know whether the change helped?
+> 
+## Preview
+
+### Overview
+
+![SearchLift Overview](docs/screenshots/overview.png)
+
+### SEO Opportunities
+
+![SearchLift SEO Opportunities](docs/screenshots/opportunities.png)
+
+### Prioritized Action Plan
+
+![SearchLift Action Plan](docs/screenshots/action-plan.png)
 
 ## What it does
 
