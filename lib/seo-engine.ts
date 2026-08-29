@@ -60,21 +60,26 @@ function opportunityConfidence(metric: Metric): Opportunity["confidence"] {
 
 function recommendation(labels: OpportunityLabel[], confidence: Opportunity["confidence"]): string {
   if (confidence === "low") {
-    return "Zbieraj więcej danych przed większą zmianą. Przy małej próbie score i estymacje mają charakter orientacyjny.";
+    return "Collect more data before making a major change. With a small sample, the score and estimates should be treated as directional.";
   }
+
   if (labels.includes("Content decay")) {
-    return "Sprawdź utracone zapytania, odśwież sekcje odpowiadające na intent i porównaj stronę z aktualnym SERP-em.";
+    return "Review lost queries, refresh sections that match search intent, and compare the page with the current SERP.";
   }
+
   if (labels.includes("Low CTR")) {
-    return "Przetestuj title i meta description pod realny intent SERP. Najpierw popraw CTR bez ryzykownej przebudowy treści.";
+    return "Test the title and meta description against the actual SERP intent. Improve CTR before making risky content changes.";
   }
+
   if (labels.includes("Quick win")) {
-    return "Wzmocnij dopasowanie treści do zapytań, linkowanie wewnętrzne i sekcje, które mogą przesunąć stronę o kilka pozycji.";
+    return "Strengthen query-to-content relevance, internal linking, and key sections that could move the page a few positions higher.";
   }
+
   if (labels.includes("Rising")) {
-    return "Treść rośnie. Rozbuduj ją ostrożnie, dodaj linkowanie wewnętrzne i chroń temat przed kanibalizacją.";
+    return "This content is gaining traction. Expand it carefully, add internal links, and protect the topic from cannibalization.";
   }
-  return "Monitoruj trend i zbieraj więcej danych przed większą zmianą.";
+
+  return "Monitor the trend and collect more data before making a major change.";
 }
 
 function lostQueriesForPage(page: string, rows: QueryPagePeriodRow[]): LostQuery[] {
