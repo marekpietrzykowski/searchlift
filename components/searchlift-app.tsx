@@ -907,11 +907,22 @@ export function SearchLiftApp() {
               <select value={days} onChange={(e) => setDays(Number(e.target.value) as 28 | 90)} className="rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-2.5 text-sm"><option value={28}>28 days</option><option value={90}>90 days</option></select>
               {connected && sites.length > 0 ? <select value={site} onChange={(e) => onSiteChange(e.target.value)} className="max-w-[340px] rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-2.5 text-sm">{sites.map((x) => <option key={x.siteUrl} value={x.siteUrl}>{x.siteUrl}</option>)}</select> : null}
               {data ? <button onClick={() => exportCsv(data)} className="rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-2.5 text-sm text-zinc-300 hover:border-zinc-700">Export CSV</button> : null}
-              {!connected ? <a href="/api/auth/google/start" className="rounded-xl bg-emerald-400 px-4 py-2.5 text-sm font-bold text-zinc-950 transition hover:bg-emerald-300">Connect Search Console</a> : null}
+              {!connected && configured ? (
+  <a
+    href="/api/auth/google/start"
+    className="rounded-xl bg-emerald-400 px-4 py-2.5 text-sm font-bold text-zinc-950 transition hover:bg-emerald-300"
+  >
+    Connect Search Console
+  </a>
+) : null}
             </div>
           </header>
 
-          {!configured ? <div className="mb-6 rounded-xl border border-amber-500/20 bg-amber-500/5 px-4 py-3 text-sm text-amber-100/70">Google OAuth is not configured yet. SearchLift is running in Demo Mode. Setup instructions are in README.md.</div> : null}
+          {!configured ? (
+  <div className="mb-6 rounded-xl border border-sky-500/20 bg-sky-500/5 px-4 py-3 text-sm text-sky-100/70">
+    Demo workspace — using synthetic Search Console data. Live Google Search Console integration is supported via OAuth 2.0.
+  </div>
+) : null}
           {error ? <div className="mb-6 rounded-xl border border-rose-500/20 bg-rose-500/5 px-4 py-3 text-sm text-rose-200">{error} <button onClick={() => loadDemo(days)} className="ml-2 underline">Use demo</button></div> : null}
           {loading ? <div className="grid min-h-[420px] place-items-center"><div className="text-center"><div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-zinc-800 border-t-emerald-400" /><p className="mt-4 text-sm text-zinc-500">Analyzing Search Console data…</p></div></div> : content}
         </div>
